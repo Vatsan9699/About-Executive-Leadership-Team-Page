@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Leadership Team</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .team-member {
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .team-member h3 {
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+        .team-member p {
+            color: #6c757d;
+        }
+        .modal-body img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #007bff;
+        }
+        .bg-pattern {
+            background-color: #e9ecef;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d1d5db' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-5">
+        <h1 class="display-4">Our Executive Leadership Team</h1>
+        <p class="lead">Meet the visionaries behind our success</p>
+    </header>
+
+    <main class="container my-5">
+        <h2 class="text-center section-title">Leadership Team</h2>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4 col-sm-6 text-center team-member" data-bs-toggle="modal" data-bs-target="#leaderModal" data-name="John Doe" data-title="CEO" data-bio="John is a visionary leader with over 20 years of experience in the tech industry.">
+                <img src="images/Gowtham raj photo.webp" alt="Gowtham Raj" class="img-fluid mb-3">
+                <h3>Gowtham Raj</h3>
+                <p>CEO</p>
+            </div>
+            <div class="col-md-4 col-sm-6 text-center team-member" data-bs-toggle="modal" data-bs-target="#leaderModal" data-name="Jane Smith" data-title="CTO" data-bio="Jane is an innovative technologist who has led numerous groundbreaking projects.">
+                <img src="images/Brits.jpg" alt="Brits Smith" class="img-fluid mb-3">
+                <h3>Brits Smith</h3>
+                <p>CTO</p>
+            </div>
+            <div class="col-md-4 col-sm-6 text-center team-member" data-bs-toggle="modal" data-bs-target="#leaderModal" data-name="Mike Johnson" data-title="CFO" data-bio="Mike brings a wealth of financial expertise and strategic planning to our team.">
+                <img src="images/mike-johnson1.jpg" alt="Mike Johnson1" class="img-fluid mb-3">
+                <h3>Mike Johnson</h3>
+                <p>CFO</p>
+            </div>
+        </div>
+    </main>
+
+    <section class="bg-pattern py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Our Vision</h2>
+            <p class="text-center">
+                At our core, we believe in pushing the boundaries of innovation to create solutions that positively impact the world. Our leadership team is committed to fostering a culture of creativity, collaboration, and continuous improvement.
+            </p>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="leaderModal" tabindex="-1" aria-labelledby="leaderModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="leaderModalLabel">Leader Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="/placeholder.svg?height=150&width=150" alt="Leader" id="modalImage">
+                    <h3 id="modalName"></h3>
+                    <p id="modalTitle"></p>
+                    <p id="modalBio"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2024 Our Company. GR network. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('leaderModal');
+            modal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const name = button.getAttribute('data-name');
+                const title = button.getAttribute('data-title');
+                const bio = button.getAttribute('data-bio');
+                const image = button.querySelector('img').src;
+
+                const modalTitle = modal.querySelector('.modal-title');
+                const modalName = modal.querySelector('#modalName');
+                const modalTitle = modal.querySelector('#modalTitle');
+                const modalBio = modal.querySelector('#modalBio');
+                const modalImage = modal.querySelector('#modalImage');
+
+                modalTitle.textContent = name;
+                modalName.textContent = name;
+                modalTitle.textContent = title;
+                modalBio.textContent = bio;
+                modalImage.src = image;
+            });
+        });
+    </script>
+</body>
+</html>
